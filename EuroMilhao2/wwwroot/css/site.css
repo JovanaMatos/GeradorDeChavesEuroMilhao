@@ -1,0 +1,141 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+
+@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+
+
+#logo {
+    display: flex;
+    justify-content: center;
+    display: flex;
+    height: 100px;
+}
+
+
+.conteiner1 { /* view criar*/
+    display: flex;
+    box-sizing: border-box;
+    width: 700px;
+    height: 100px;
+    text-align: center;
+    margin: auto;
+    text-align: center;
+    align-content: center;
+    padding-bottom: 20px;
+  }
+
+
+.item {/*formato das chaves*/
+    
+    align-content: center;/*aliando conteudo */
+    text-align: center;/*aliando input*/
+    font-size: x-large;
+    font-family: "Roboto", sans-serif;
+    border-radius: 100px;
+    position: relative;
+    list-style: none;/*retirando  . da lista*/
+    width: 60px;
+    height: 60px;
+    box-shadow: 0 0 10px #daa520;
+    outline: none; /*tirando contorno do input*/
+    border: none;
+    margin-left: 15px;
+    color: #1e1e69;
+}
+
+.item2 { /*sinal de +*/
+    border-radius: 0px;
+    box-shadow: none;
+    display: inline;
+    margin-left: 15px;
+}
+
+
+.dataSorteio {
+    margin-top: 50px;
+    margin-bottom: 30px;
+    text-align: center;
+    font-family: "Roboto", sans-serif;
+    color: #daa520;
+    font-size: x-large;
+}
+
+
+.msg { 
+    font-family: "Roboto", sans-serif;
+    font-size: large;
+    color: #1e1e69;
+}
+
+.msg2 {/*msg da tabela*/
+    color: #daa520;
+    text-align: center;
+    font-size: 50px;
+    padding: 20px
+}
+
+
+.estrutura {
+    border: outset 5px #daa520;
+    width: auto;
+    
+}
+
+.button {
+    background: #37B7C3;
+    border: none;
+    height: 50px;
+    width: 500px;
+    border-radius: 10px;
+    font-family: "Roboto", sans-serif;
+    color: #daa520;
+    background-color: #1e1e69;
+    font-size: large;
+    margin: 30px;
+
+}
+
+.nChaves {
+    border-radius: 10px;
+    width: 50px;
+    height: 45px;
+    color: #1e1e69;
+   
+}
+
+.erro {
+    color: #1e1e69;
+    font-weight: bold;
+}
+
+input[type=number]::-webkit-inner-spin-button,/*para retira setas*/
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+
+
+

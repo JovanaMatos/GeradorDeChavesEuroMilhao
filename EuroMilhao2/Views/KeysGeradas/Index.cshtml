@@ -1,0 +1,77 @@
+﻿@model IEnumerable<EuroMilhao2.Models.KeysGeradas>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<section id="logo">
+    <img src="~/img/header.png" alt="logo">
+</section>
+
+<h1 class="msg2">Lista de Chaves Geradas</h1>
+
+<table class="table table-striped">
+    <thead>
+        <tr class="table-warning">
+            
+            <th>
+                @Html.DisplayNameFor(model => model.KeyNumber1)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.KeyNumber2)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.KeyNumber3)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.KeyNumber4)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.KeyNumber5)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.KeyStar1)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.KeyStar2)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DataSorteio)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                
+                <td> 
+                    @Html.DisplayFor(modelItem => item.KeyNumber1)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.KeyNumber2)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.KeyNumber3)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.KeyNumber4)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.KeyNumber5)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.KeyStar1)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.KeyStar2)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DataSorteio)
+                </td>
+              
+            </tr>
+        }
+    </tbody>
+</table>
+

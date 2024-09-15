@@ -1,0 +1,52 @@
+﻿@using System.Globalization
+
+@model List<EuroMilhao2.Models.KeysGeradas>
+
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+
+@{
+
+
+    var data = Model.Last();
+    var diaSemana = data.DataSorteio.ToString("dddd - dd/MM/yyyy", new CultureInfo("pt-PT"));
+
+
+}
+
+<div class="estrutura">
+
+    <section id="logo">
+        <img src="~/img/header.png" alt="logo">
+    </section>
+
+
+    <h3 class="dataSorteio">Data Sorteio: @diaSemana.</h3>
+
+
+  
+
+        @foreach (var item in Model)
+        {
+            <ul class="conteiner1">
+                <li class="item">@item.KeyNumber1</li>
+                <li class="item">@item.KeyNumber2</li>
+                <li class="item">@item.KeyNumber3</li>
+                <li class="item">@item.KeyNumber4</li>
+                <li class="item">@item.KeyNumber5</li>
+                <li class="item item2">+</li>
+                <li class="item">@item.KeyStar1</li>
+                <li class="item">@item.KeyStar2</li>
+            </ul>
+        }
+
+
+    </div>
+
+
+
+

@@ -1,0 +1,76 @@
+﻿@model KeysGeradas
+
+@{
+    ViewData["Title"] = "Criar";
+}
+
+
+<div class="estrutura" >
+
+
+    <section id="logo">
+        <img src="~/img/header.png" alt="logo">
+    </section>
+
+
+    <div class="text-center" class="conteiner1">
+       
+        <p class="dataSorteio msg"> Gerador de chaves. Manual, aleatório ou mista. <br /> Atenção: Caso você não preencha todos os campos, nosso gerador preencherá automaticamente os campos restantes.</p>
+        <br />
+
+        <form asp-action="Criar" id="form" onsubmit="return validarRepetidos()">
+            <div asp-validation-summary="ModelOnly"></div>
+            <input asp-for="KeyNumber1" class="item" id ="numb1" max="50" min="1" oninput="validarRepetidos()" />
+            <span asp-validation-for="KeyNumber1" ></span>
+
+
+            <input asp-for="KeyNumber2" class="item" id="numb2" max="50" min="1" oninput="validarRepetidos()" />
+            <span asp-validation-for="KeyNumber2"></span>
+
+
+            <input asp-for="KeyNumber3" class="item" id="numb3" max="50" min="1" oninput="validarRepetidos()" />
+            <span asp-validation-for="KeyNumber3"></span>
+
+
+            <input asp-for="KeyNumber4" class="item" id="numb4" max="50" min="1" oninput="validarRepetidos()" />
+            <span asp-validation-for="KeyNumber4"></span>
+
+
+            <input asp-for="KeyNumber5" class="item" id="numb5" max="50" min="1" oninput="validarRepetidos()" />
+            <span asp-validation-for="KeyNumber5" ></span>
+
+            <p class="item item2 sinal">+</p>
+
+            <input asp-for="KeyStar1" class="item" id="star1" max="12" min="1" oninput="validarRepetidos()" />
+            <span asp-validation-for="KeyStar1" ></span>
+
+
+            <input asp-for="KeyStar2" class="item" id="star2" max="12" min="1" oninput="validarRepetidos()" />
+            <span asp-validation-for="KeyStar2" ></span>
+            <br /> <br />
+
+
+           
+            <span id="mensagemErroN" class="erro"></span> 
+            <span id="mensagemErroE" class="erro"></span> 
+           
+
+            <br /> <br />
+
+            <label for="numeChaves" style="font-weight: bold; color: #1e1e69;">Nº Chaves a ser Gerada:</label>
+            <input type="number" name="numeChaves" value="0" class="item nChaves" />
+
+
+            <div >
+                <input type="submit" value="Gerar Chaves" class="button"    />
+            </div>
+        </form>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
