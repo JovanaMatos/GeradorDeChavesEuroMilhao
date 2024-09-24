@@ -1,0 +1,53 @@
+﻿@model List<EuroMilhao2.Models.Estatistica>
+
+@{
+    ViewData["Title"] = "Index";
+    var quantBd = Model.Select(x => x.Total).FirstOrDefault();
+}
+
+
+<section id="logo">
+    <img src="~/img/header.png" alt="logo">
+</section>
+
+<h3 class="msg2">5 chaves mais geradas em  @quantBd</h3>
+
+<table class="table table-striped">
+
+
+
+    <tr class="table-warning">
+
+        <th>
+           Numeros
+        </th>
+        <th>
+            Quantidades extraidas
+        </th>
+        <th>
+            Porcentagem
+            
+        </th>
+       
+
+        @foreach (var item in Model)
+        {
+            <tr>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Number)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NumeroFrequencia)
+                </td>
+                <td>
+                   
+                    @Html.DisplayFor(modelItem => item.Porcentagem)%
+                </td>
+              
+              
+            </tr>
+        }
+   
+</table>
+

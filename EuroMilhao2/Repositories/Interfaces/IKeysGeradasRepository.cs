@@ -4,7 +4,9 @@ namespace EuroMilhao2.Repository.Interfaces
 {
     public interface IKeysGeradasRepository
     {
-        public void SalvarChaves();
+        public List<Estatistica> Estatistica();
+
+        public  bool SalvarChaves();
      
        Task<List<KeysGeradas>> MostrarTodasChaves();
     }

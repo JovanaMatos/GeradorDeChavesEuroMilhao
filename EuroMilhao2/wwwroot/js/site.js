@@ -52,4 +52,23 @@
         mensagemErroE.textContent = ""; 
         return true;
     }
+
+    function LimparCampos() {
+
+        document.querySelector("#numb1").value(''); //limpando inputs
+        document.querySelector("#numb2").value('');
+        document.querySelector("#numb3").value('');
+        document.querySelector("#numb4").value('');
+        document.querySelector("#numb5").value('');
+                                       
+        document.querySelector("#star1").value('');
+        document.querySelector("#star2").value('');
+
+
+    }
+
+  
+
+
+    
 }

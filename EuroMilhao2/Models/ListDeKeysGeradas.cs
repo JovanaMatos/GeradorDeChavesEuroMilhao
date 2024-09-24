@@ -5,10 +5,7 @@ namespace EuroMilhao2.Models
     public class ListDeKeysGeradas
     {
         private List<KeysGeradas> ListKeysSorteadas = new List<KeysGeradas>();
-
-
-
-
+          
         public void SetListKeysSorteadas(KeysGeradas keys) //para add na lista
         {
             ListKeysSorteadas.Add(keys);
@@ -26,6 +23,8 @@ namespace EuroMilhao2.Models
             ListKeysSorteadas.Clear();
 
         }
+
+       
 
 
     }

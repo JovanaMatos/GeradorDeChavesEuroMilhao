@@ -39,7 +39,7 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=KeysGeradas}/{action=Criar}/{id?}");
+    pattern: "{controller=Estatistica}/{action=Index}/{id?}");
 
 
 

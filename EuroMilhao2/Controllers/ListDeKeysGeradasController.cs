@@ -1,5 +1,6 @@
 ﻿using EuroMilhao2.Context;
 using EuroMilhao2.Models;
+using EuroMilhao2.Repository.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EuroMilhao2.Controllers
@@ -9,10 +10,16 @@ namespace EuroMilhao2.Controllers
 
         private readonly ListDeKeysGeradas _listKeysGeradas;
 
-        public ListDeKeysGeradasController(ListDeKeysGeradas listKeysGeradas)
+
+        private readonly IKeysGeradasRepository _keysGeradasRepository;
+
+
+
+        public ListDeKeysGeradasController(ListDeKeysGeradas listKeysGeradas, IKeysGeradasRepository keysGeradasRepository)
         {
 
             _listKeysGeradas = listKeysGeradas;
+            _keysGeradasRepository = keysGeradasRepository;
         }
 
         public IActionResult Index()
@@ -25,6 +32,9 @@ namespace EuroMilhao2.Controllers
 
             return result;
         }
+
+
+
 
 
 
