@@ -2,6 +2,7 @@
 using EuroMilhao2.Models;
 using EuroMilhao2.Repository.Interfaces;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 using System.Globalization;
 
 namespace EuroMilhao2.Repositories
@@ -11,11 +12,11 @@ namespace EuroMilhao2.Repositories
     {
 
         private readonly AppDbContext _appDbContext;
-        private readonly ListDeKeysGeradas _listKeysGeradas;
-    
+        private readonly ListKeysGeradas _listKeysGeradas;
 
 
-        public KeysGeradasRepository(AppDbContext appDbContext, ListDeKeysGeradas listKeysGeradas)
+
+        public KeysGeradasRepository(AppDbContext appDbContext, ListKeysGeradas listKeysGeradas)
         {
             _appDbContext = appDbContext;
             _listKeysGeradas = listKeysGeradas;
@@ -32,7 +33,7 @@ namespace EuroMilhao2.Repositories
         public bool SalvarChaves()// para savar chaves
         {
 
-            foreach (var keys in _listKeysGeradas.GetListDeKeysGeradas())
+            foreach (var keys in _listKeysGeradas.GetListKeysGeradas())//verifica se chave existe 
             {
 
                 var verificaSeExisteBd = _appDbContext.KeysGeradas.Any(X => X.KeyNumber1.Equals(keys.KeyNumber1.Value)//verificar se existe chave igual
@@ -50,7 +51,7 @@ namespace EuroMilhao2.Repositories
 
 
 
-            foreach (var keys in _listKeysGeradas.GetListDeKeysGeradas())
+            foreach (var keys in _listKeysGeradas.GetListKeysGeradas())
             {
                 var keyGeradas = new KeysGeradas()
                 {
@@ -76,17 +77,17 @@ namespace EuroMilhao2.Repositories
         }
 
 
-        public List<Estatistica> Estatistica()
+        public List<Estatistica> NumerosMaisGerados()
         {
 
             var bd = _appDbContext.KeysGeradas.ToList(); // passando a bd para uma variavel tipo lista
-                     
+
 
             var numbers = from key in bd
                           from numb in new[] { key.KeyNumber1, key.KeyNumber2, key.KeyNumber3, key.KeyNumber4, key.KeyNumber5 }
                           select numb; //fazendo um select apenas dos numeros
 
-            
+
 
             var agrupados = from numb in numbers // agrupando numeros iguais e depois contando a quantidade
                             group numb by numb into agrupa
@@ -96,7 +97,7 @@ namespace EuroMilhao2.Repositories
                                 quantidade = agrupa.Count()
                             };
 
-                    
+
 
             var resultado = from item in agrupados
                             orderby item.quantidade descending //ordenando a quantidade em ordem descrecente para depois pegar os que mais sairam
@@ -108,31 +109,57 @@ namespace EuroMilhao2.Repositories
 
             List<Estatistica> listEstatistica = new List<Estatistica>(); // criando uma lista do tipo estatistica
 
-
-
-            Estatistica estatistica2 = new Estatistica { Total = bd.Count() };// contando o total da bd para efetuar a porcentagem
+            int totalBd = bd.Count();
 
             foreach (var item in estatisticaNumb)
             {
                 Estatistica estatistica = new Estatistica // criando um obj do tipo estatistica e passando os dados do agrupamento
                 {
                     Number = Convert.ToInt32(item.numeros), // convertendo para int 
-                    NumeroFrequencia = item.quantidade, 
-                    Total = bd.Count(),//quantidade de chaves no total
-                    Porcentagem = (((double)item.quantidade / bd.Count()) * 100).ToString("0.00", CultureInfo.InvariantCulture) //calculando valor de quantos porcento
+                    NumeroFrequencia = item.quantidade,
+                    Total = totalBd,//quantidade de chaves no total
+                    Porcentagem = (((double)item.quantidade / totalBd) * 100).ToString("0.00", CultureInfo.InvariantCulture) //calculando valor de quantos porcento
 
                 };
 
                 listEstatistica.Add(estatistica);
 
-             }
+            }
 
 
 
             return listEstatistica;
 
         }
-    }
+
+        public List<Estatistica> NumerosMenosGerados()
+        {
+            var bd = _appDbContext.KeysGeradas.ToList();
+            var listnumbs = bd.SelectMany(x => new[] { x.KeyNumber1, x.KeyNumber2, x.KeyNumber3, x.KeyNumber4, x.KeyNumber5 })
+                .GroupBy(numGroup => numGroup).Select(ng => new { valor = ng.Key, quant = ng.Count() }).OrderBy(x => x.quant).Take(5).ToList();
+
+            List<Estatistica> listMenosGerados = new List<Estatistica>();
+            int totalBd = bd.Count();
+
+            foreach (var item in listnumbs)
+            {
+                Estatistica estatistica = new Estatistica // criando um obj do tipo estatistica e passando os dados do agrupamento
+                {
+                    Number = Convert.ToInt32(item.valor), // convertendo para int 
+                    NumeroFrequencia = item.quant,
+                    Total = totalBd,//quantidade de chaves no total
+                    Porcentagem = (((double)item.quant / totalBd) * 100).ToString("0.00", CultureInfo.InvariantCulture) //calculando valor de quantos porcento
+
+                };
+
+                listMenosGerados.Add(estatistica);
+
+            }
+
+
+            return listMenosGerados;
+        }
+}
 
 
 
@@ -148,21 +175,6 @@ namespace EuroMilhao2.Repositories
 
 
 
-
-//.SelectMany(c => new[] { c.KeyNumber1, c.KeyNumber2, c.KeyNumber3, c.KeyNumber4, c.KeyNumber5 })
-//.GroupBy(numero => numero)
-//.Select(g => new { Numero = g.Key, Frequencia = g.Count() })
-//.OrderByDescending(x => x.Frequencia);
-
-
-
-
-//        foreach (var item in resultado)
-//        {
-//            Console.WriteLine($"Numero: {item.Numero}, Frequencia: {item.Frequencia}");
-//        }
-//    }
-//}
 
 
 

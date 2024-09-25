@@ -14,7 +14,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 
 
 builder.Services.AddScoped<IKeysGeradasRepository, KeysGeradasRepository>();//criando tipos de serviços
-builder.Services.AddSingleton<ListDeKeysGeradas>();
+builder.Services.AddSingleton<ListKeysGeradas>();
 
 
 // Add services to the container.

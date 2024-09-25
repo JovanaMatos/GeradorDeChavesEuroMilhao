@@ -5,17 +5,17 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace EuroMilhao2.Controllers
 {
-    public class ListDeKeysGeradasController : Controller
+    public class ListKeysGeradasController : Controller
     {
 
-        private readonly ListDeKeysGeradas _listKeysGeradas;
+        private readonly ListKeysGeradas _listKeysGeradas;
 
 
         private readonly IKeysGeradasRepository _keysGeradasRepository;
 
 
 
-        public ListDeKeysGeradasController(ListDeKeysGeradas listKeysGeradas, IKeysGeradasRepository keysGeradasRepository)
+        public ListKeysGeradasController(ListKeysGeradas listKeysGeradas, IKeysGeradasRepository keysGeradasRepository)
         {
 
             _listKeysGeradas = listKeysGeradas;
@@ -25,10 +25,10 @@ namespace EuroMilhao2.Controllers
         public IActionResult Index()
         {
 
-            var result = View(_listKeysGeradas.GetListDeKeysGeradas()); //mostra na view chaves geradas no momento
+            var result = View(_listKeysGeradas.GetListKeysGeradas()); //mostra na view chaves geradas no momento
 
 
-            _listKeysGeradas.LimparListDeKeysGeradas();// limpa após mostrar
+            _listKeysGeradas.LimparListKeysGeradas();// limpa após mostrar
 
             return result;
         }

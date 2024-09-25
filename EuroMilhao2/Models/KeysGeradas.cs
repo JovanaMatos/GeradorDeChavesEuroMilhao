@@ -100,8 +100,7 @@ namespace EuroMilhao2.Models
 
             keys.Date = DateTime.Now;
 
-
-            
+           
 
         }
 

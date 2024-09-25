@@ -1,9 +1,14 @@
-﻿@model List<EuroMilhao2.Models.Estatistica>
+﻿@model Estatistica
 
 @{
     ViewData["Title"] = "Index";
-    var quantBd = Model.Select(x => x.Total).FirstOrDefault();
+    var quantBd = Model.GetNumerosMaisGerados().Select(x => x.Total).FirstOrDefault();
+
+
+
 }
+
+
 
 
 <section id="logo">
@@ -30,7 +35,7 @@
         </th>
        
 
-        @foreach (var item in Model)
+        @foreach (var item in Model.GetNumerosMaisGerados())
         {
             <tr>
 
@@ -50,4 +55,45 @@
         }
    
 </table>
+ <h3 class="msg2">5 chaves menos gerados em  @quantBd</h3>
 
+<table class="table table-striped">
+
+
+
+    <tr class="table-warning">
+
+        <th>
+           Numeros
+        </th>
+        <th>
+            Quantidades extraidas
+        </th>
+        <th>
+            Porcentagem
+            
+        </th>
+       
+
+        @foreach (var item in Model.GetNumerosMenosGerados())
+        {
+            <tr>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Number)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NumeroFrequencia)
+                </td>
+                <td>
+                    
+                    @Html.DisplayFor(modelItem => item.Porcentagem)%
+                </td>
+              
+              
+            </tr>
+        }
+   
+</table>
+
+ 

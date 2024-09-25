@@ -4,7 +4,8 @@ namespace EuroMilhao2.Repository.Interfaces
 {
     public interface IKeysGeradasRepository
     {
-        public List<Estatistica> Estatistica();
+        public List<Estatistica> NumerosMaisGerados();
+        public List<Estatistica> NumerosMenosGerados();
 
         public  bool SalvarChaves();
      

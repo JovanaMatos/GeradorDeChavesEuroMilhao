@@ -2,7 +2,7 @@
 
 namespace EuroMilhao2.Models
 {
-    public class ListDeKeysGeradas
+    public class ListKeysGeradas
     {
         private List<KeysGeradas> ListKeysSorteadas = new List<KeysGeradas>();
           
@@ -11,14 +11,14 @@ namespace EuroMilhao2.Models
             ListKeysSorteadas.Add(keys);
 
         }
-        public List<KeysGeradas> GetListDeKeysGeradas() //mostrar lista
+        public List<KeysGeradas> GetListKeysGeradas() //mostrar lista
         {
             List<KeysGeradas> copiaListKeysSorteadas = new List<KeysGeradas>(ListKeysSorteadas);
 
             return copiaListKeysSorteadas; // enviando copia para evitar caso de modificação
         }
 
-        public void LimparListDeKeysGeradas() // para limpar lista depois de ser salvo e mostrar
+        public void LimparListKeysGeradas() // para limpar lista depois de ser salvo e mostrar
         {
             ListKeysSorteadas.Clear();
 

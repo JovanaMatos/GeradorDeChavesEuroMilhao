@@ -9,9 +9,9 @@ namespace EuroMilhao2.Controllers
     {
 
         private readonly IKeysGeradasRepository _keysGeradasRepository;
-        private readonly ListDeKeysGeradas _listDeKeysGeradas;
+        private readonly ListKeysGeradas _listDeKeysGeradas;
 
-        public KeysGeradasController(IKeysGeradasRepository keysGeradasRepository, ListDeKeysGeradas listDeKeysGeradas)
+        public KeysGeradasController(IKeysGeradasRepository keysGeradasRepository, ListKeysGeradas listDeKeysGeradas)
         {
             _keysGeradasRepository = keysGeradasRepository;
             _listDeKeysGeradas = listDeKeysGeradas;
@@ -59,14 +59,14 @@ namespace EuroMilhao2.Controllers
 
                     if (_keysGeradasRepository.SalvarChaves())
                     {
-                        // ViewBag.mensagem = "Essa chave ja existe!";
-                        break;
+                        break;//se true mostra chves geradas
 
                     }
-                    _listDeKeysGeradas.LimparListDeKeysGeradas();
+                    _listDeKeysGeradas.LimparListKeysGeradas();
                 }
 
             }
+
             else //se não gerará só uma
             {
 
@@ -78,7 +78,7 @@ namespace EuroMilhao2.Controllers
                 {
                     TempData["erro"] = "Essa chave ja existe!";
 
-                    _listDeKeysGeradas.LimparListDeKeysGeradas();
+                    _listDeKeysGeradas.LimparListKeysGeradas();
 
                     return RedirectToAction("Criar");
                 }
@@ -89,9 +89,9 @@ namespace EuroMilhao2.Controllers
             //_keysGeradasRepository.SalvarChaves();// após passar por todas verificações e add na lista, salvo na base de dados
 
 
-            ViewBag.mensagem = "";
+            //ViewBag.mensagem = "";
 
-            return RedirectToAction("Index", "ListDeKeysGeradas"); //retorna para view que mostra os gerados no momento
+            return RedirectToAction("Index", "ListKeysGeradas"); //retorna para view que mostra os gerados no momento
 
         }
 
